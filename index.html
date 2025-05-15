@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Salvador Arreola - Traumatología y Ortopedia</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px;
+            /* Ajuste global para el header fijo */
+        }
+
+        header {
+            background-color: #003366;
+            /* Azul oscuro corporativo */
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+            max-width: 1200px;
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-decoration: none;
+            /* Asegurar que no haya subrayado si se envuelve en <a> */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            /* Alineación vertical de los ítems */
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            /* Padding para mejor área de click */
+        }
+
+        nav ul li a:hover {
+            color: #aaccff;
+        }
+
+        /* Botón de Hamburguesa para Móvil */
+        .menu-toggle {
+            display: none;
+            /* Oculto por defecto en escritorio */
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            /* Tamaño del icono */
+            cursor: pointer;
+        }
+
+        /* Estilos del Hero Actualizado */
+        #inicio {
+            position: relative;
+            background-image: url('hero1.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            min-height: calc(100vh - 70px);
+            /* Ajustar altura considerando el padding-top del body */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* padding-top: 80px; Eliminado, ya que el body tiene padding-top */
+        }
+
+        #inicio::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 40, 80, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.25em;
+            margin-bottom: 35px;
+            font-weight: 300;
+            line-height: 1.7;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .hero-content .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
+        }
+
+        /* Estilos generales de las secciones */
+        .section-padding {
+            padding: 70px 0;
+            /* Padding vertical uniforme */
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            max-width: 1100px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: #003366;
+            font-weight: 600;
+        }
+
+        /* Estilos para la sección de Servicios */
+        #servicios {
+            background-color: #f8f9fa;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .servicio-item {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .servicio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .servicio-item img {
+            /* Placeholder para iconos */
+            max-width: 70px;
+            height: 70px;
+            /* Asegurar altura uniforme para los placeholders */
+            object-fit: contain;
+            /* Para que el texto de placeholder se vea bien */
+            margin-bottom: 20px;
+            border-radius: 50%;
+            /* Hacerlos circulares */
+            background-color: #007bff;
+            /* Color de fondo para el placeholder */
+            display: flex;
+            /* Para centrar el texto del placeholder si es una URL de placehold.co */
+            align-items: center;
+            justify-content: center;
+            color: white;
+            /* Color del texto del placeholder */
+            font-size: 10px;
+            /* Tamaño del texto del placeholder */
+            margin-left: auto;
+            /* Centrar la imagen/icono */
+            margin-right: auto;
+            /* Centrar la imagen/icono */
+        }
+
+
+        .servicio-item h3 {
+            font-size: 1.4em;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .servicio-item p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Estilos para la sección Sobre Mí */
+        #sobre-mi {
+            background-color: #ffffff;
+        }
+
+        .sobre-mi-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .sobre-mi-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .sobre-mi-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .sobre-mi-texto {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        .sobre-mi-texto h2 {
+            font-size: 2.2em;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .sobre-mi-texto p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .sobre-mi-texto .btn {
+            margin-top: 10px;
+        }
+
+        /* Estilos para la sección de Testimonios */
+        #testimonios {
+            background-color: #e9f5ff;
+        }
+
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonio-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+            border-left: 6px solid #007bff;
+        }
+
+        .testimonio-card p.comentario {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1em;
+        }
+
+        .testimonio-card p.autor {
+            font-weight: bold;
+            text-align: right;
+            color: #003366;
+            font-size: 0.95em;
+        }
+
+        /* Estilos para la Sección de Seguros */
+        #seguros {
+            background-color: #ffffff;
+            /* Fondo blanco o un gris muy claro como #f8f9fa */
+        }
+
+        .seguros-intro {
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        .seguros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            align-items: center;
+        }
+
+        .seguro-item {
+            background-color: #f8f9fa;
+            /* Fondo suave para cada item */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .seguro-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .seguro-item img.seguro-logo {
+            /* Estilo para los logos de aseguradoras */
+            max-width: 100%;
+            /* Ajustar al contenedor */
+            max-height: 60px;
+            /* Altura máxima para consistencia */
+            object-fit: contain;
+            /* Para que el logo se vea bien sin distorsión */
+            margin-bottom: 10px;
+        }
+
+        .seguro-item p {
+            font-size: 0.95em;
+            color: #003366;
+            /* Color del nombre de la aseguradora */
+            font-weight: 500;
+        }
+
+
+        /* Estilos para la sección de Contacto */
+        #contacto {
+            background-color: #f0f4f8;
+            /* Un color de fondo ligeramente diferente */
+        }
+
+        .contacto-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contacto-info,
+        .contacto-form-container {
+            flex: 1;
+            min-width: 320px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contacto-info h3,
+        .contacto-form-container h3 {
+            font-size: 1.9em;
+            color: #003366;
+            margin-bottom: 25px;
+        }
+
+        .contacto-info p {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .contacto-info p img {
+            /* Estilo para iconos en info de contacto */
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 22px;
+            /* Tamaño de iconos */
+            height: 22px;
+        }
+
+        .contacto-info a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contacto-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contacto-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .contacto-form input,
+        .contacto-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #fdfdfd;
+        }
+
+        .contacto-form input:focus,
+        .contacto-form textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+            outline: none;
+        }
+
+        .contacto-form textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .contacto-form .btn {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .contacto-map {
+            margin-top: 30px;
+        }
+
+        .contacto-map iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #002244;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+            padding: 0 15px;
+            /* Padding para que no toque los bordes en móvil */
+        }
+
+        /* --- ESTILOS RESPONSIVOS --- */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+                /* Ajustar padding para header más pequeño en móvil */
+            }
+
+            nav .logo {
+                font-size: 1.4em;
+            }
+
+            .menu-toggle {
+                display: block;
+                /* Mostrar botón de hamburguesa */
+                z-index: 1001;
+                /* Asegurar que esté por encima del logo si se superponen */
+            }
+
+            nav ul {
+                display: none;
+                /* Ocultar menú por defecto en móvil */
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                /* Altura del header */
+                left: 0;
+                width: 100%;
+                background-color: #003366;
+                /* Mismo color que el header */
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.nav-active {
+                /* Clase para mostrar el menú */
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                /* Quitar margen izquierdo */
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                /* Para que ocupen todo el ancho */
+                padding: 15px 20px;
+                /* Más padding para mejor toque */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                /* Separador sutil */
+            }
+
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+
+            #inicio {
+                min-height: calc(80vh - 60px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .hero-content .btn {
+                padding: 12px 28px;
+                font-size: 1em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .sobre-mi-content {
+                gap: 30px;
+            }
+
+            .contacto-content {
+                gap: 25px;
+            }
+
+            .contacto-info,
+            .contacto-form-container {
+                min-width: 100%;
+                /* Ocupar todo el ancho en móvil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #inicio {
+                min-height: calc(70vh - 60px);
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .section-title {
+                font-size: 1.9em;
+                margin-bottom: 35px;
+            }
+
+            .servicios-grid,
+            .testimonios-grid,
+            .seguros-grid {
+                grid-template-columns: 1fr;
+                /* Una columna en móviles muy pequeños */
+            }
+
+            .btn {
+                /* Ajuste global de botones en móvil */
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">Dr. Salvador Arreola</a>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+                &#9776; </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#seguros">Seguros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <div class="hero-content">
+            <h1>Recupera tu movilidad y calidad de vida</h1>
+            <p>Especialista en Traumatología y Ortopedia en Guadalajara. Atención experta para una vida sin dolor y
+                plena actividad.</p>
+            <a href="#contacto" class="btn">Agendar Cita</a>
+        </div>
+    </section>
+
+    <section id="servicios" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Especialidades Médicas</h2>
+            <div class="servicios-grid">
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=AH"
+                        alt="Icono Artroscopia de Hombro y Rodilla">
+                    <h3>Artroscopia de Hombro y Rodilla</h3>
+                    <p>Mínima invasión para diagnóstico y tratamiento de lesiones articulares, permitiendo una
+                        recuperación más rápida.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=LD" alt="Icono Lesiones Deportivas">
+                    <h3>Lesiones Deportivas</h3>
+                    <p>Atención especializada para atletas, enfocada en la recuperación funcional y el retorno seguro al
+                        deporte.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=PA" alt="Icono Prótesis Articulares">
+                    <h3>Prótesis Articulares</h3>
+                    <p>Reemplazos de hombro, rodilla y cadera para aliviar el dolor y restaurar la movilidad en casos de
+                        desgaste avanzado.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=MF" alt="Icono Manejo de Fracturas">
+                    <h3>Manejo de Fracturas</h3>
+                    <p>Tratamiento integral de fracturas, desde el diagnóstico preciso hasta la recuperación completa,
+                        conservador o quirúrgico.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=PC" alt="Icono Padecimientos de Columna">
+                    <h3>Padecimientos de Columna</h3>
+                    <p>Diagnóstico y tratamiento de afecciones de la columna vertebral, buscando mejorar tu calidad de
+                        vida.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=OP" alt="Icono Ortopedia Pediátrica">
+                    <h3>Ortopedia Pediátrica</h3>
+                    <p>Atención especializada para los problemas musculoesqueléticos de niños y adolescentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Conoce al Dr. Arreola</h2>
+            <div class="sobre-mi-content">
+                <div class="sobre-mi-img">
+                    <img src="https://static.wixstatic.com/media/a24af1_82483c9d7e334e11933319df770e4672~mv2.jpg/v1/crop/x_75,y_0,w_656,h_821/fill/w_371,h_465,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a24af1_82483c9d7e334e11933319df770e4672~mv2.jpg"
+                        alt="Dr. Salvador Arreola Murillo, Especialista en Ortopedia y Traumatología">
+                </div>
+                <div class="sobre-mi-texto">
+                    <h2>Dr. Salvador Arreola Murillo</h2>
+                    <p>Médico especialista en Ortopedia y Traumatología, con un firme compromiso en devolver la función
+                        y mejorar significativamente la calidad de vida de mis pacientes. Mi formación es sólida y
+                        cuento con amplia experiencia en cirugía articular avanzada, medicina deportiva de alto
+                        rendimiento, artroscopia de mínima invasión y reemplazos articulares de última generación.</p>
+                    <p>Mi prioridad es tu bienestar integral. Por ello, ofrezco una atención completamente
+                        personalizada, utilizando las técnicas quirúrgicas y terapéuticas más avanzadas para asegurar
+                        una recuperación óptima y duradera. Cuento con la certificación vigente del Consejo Mexicano de
+                        Ortopedia y Traumatología (CMOT), lo cual respalda mi dedicación a la excelencia médica y la
+                        actualización continua en mi campo.</p>
+                    <p>Entiendo que cada paciente es único y presenta necesidades específicas. Dedico el tiempo
+                        necesario para escucharte, realizar un diagnóstico preciso y diseñar un plan de tratamiento a tu
+                        medida, que te permita retomar tus actividades diarias y disfrutar de la vida sin limitaciones
+                        lo antes posible.</p>
+                    <a href="#contacto" class="btn">Agenda tu Valoración</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Lo que Opinan Nuestros Pacientes</h2>
+            <div class="testimonios-grid">
+                <div class="testimonio-card">
+                    <p class="comentario">"La atención del Dr. Arreola fue excepcional. Me explicó mi padecimiento con
+                        claridad y el tratamiento fue sumamente efectivo. ¡Lo recomiendo ampliamente!"</p>
+                    <p class="autor">- Laura G.</p>
+                </div>
+                <div class="testimonio-card">
+                    <p class="comentario">"Después de mi cirugía de rodilla con el Dr. Salvador, he podido volver a
+                        correr sin dolor. Estoy muy agradecido por su profesionalismo y calidad humana."</p>
+                    <p class="autor">- Carlos M.</p>
+                </div>
+                <div class="testimonio-card">
+                    <p class="comentario">"La experiencia y la calidez del Dr. Arreola hacen toda la diferencia. Desde
+                        la primera consulta me sentí en las mejores manos. ¡Excelente médico!"</p>
+                    <p class="autor">- Sofía R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="seguros" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Cobertura de Seguros Médicos</h2>
+            <p class="seguros-intro">
+                Para tu comodidad y tranquilidad, el Dr. Salvador Arreola colabora con una amplia red de aseguradoras de
+                gastos médicos mayores.
+                Nos esforzamos por facilitar tu acceso a una atención médica de excelencia. Consulta la lista y agenda
+                tu cita con confianza.
+            </p>
+            <div class="seguros-grid">
+                <div class="seguro-item">
+                    <img src="metlife_logo.webp" alt="Logo Metlife" class="seguro-logo">
+                    <p>Metlife</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="seguros_moterrey.png" alt="Logo Seguros Monterrey New York Life" class="seguro-logo">
+                    <p>Seguros Monterrey New York Life</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="gnp_logo.webp" alt="Logo GNP Seguros" class="seguro-logo">
+                    <p>GNP Seguros</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="mapfre.webp" alt="Logo Seguros Mapfre" class="seguro-logo">
+                    <p>Seguros Mapfre</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="atlas.webp" alt="Logo Seguros Atlas" class="seguro-logo">
+                    <p>Seguros Atlas</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="inbursa-seguros.webp" alt="Logo Seguros Inbursa" class="seguro-logo">
+                    <p>Seguros Inbursa</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="Allianz.webp" alt="Logo Seguros Allianz" class="seguro-logo">
+                    <p>Seguros Allianz</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="zurich.webp" alt="Logo Seguros Zurich" class="seguro-logo">
+                    <p>Seguros Zurich</p>
+                </div>
+                <div class="seguro-item">
+                    <img src="ammsa.png" alt="Logo Ammsa" class="seguro-logo">
+                    <p>Ammsa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Agenda tu Cita Hoy Mismo</h2>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <p>Si deseas agendar una consulta, resolver dudas o necesitas más información, no dudes en
+                        contactarme. Estoy para servirte.</p>
+                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=T"
+                            alt="Icono Teléfono"><strong>Teléfono:</strong> <a href="tel:+523338130609">+52 (33) 3813
+                            0609</a></p>
+                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=E"
+                            alt="Icono Email"><strong>Email:</strong> <a
+                            href="mailto:contacto@drsalvadorarreola.com">contacto@drsalvadorarreola.com</a></p>
+                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=U"
+                            alt="Icono Ubicación"><strong>Dirección:</strong><br>Hospital Real San José, Consultorio
+                        415<br>Av. Real San José, Valle Real<br>Zapopan, Jalisco, México.</p>
+                    <div class="contacto-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59720.51802708102!2d-103.4130336486328!3d20.691448499999988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428af5ce5697df5%3A0xcf9f29038b825235!2sDr.%20Salvador%20Arreola.%20Traumatologia%20y%20Ortopedia%20HMA!5e0!3m2!1ses-419!2smx!4v1715744630003!5m2!1ses-419!2smx"
+                            width="100%" height="350" style="border:0; border-radius: 10px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="contacto-form-container">
+                    <h3>Envíanos un Mensaje Directo</h3>
+                    <form action="TU_ENDPOINT_DE_FORMULARIO" method="POST" class="contacto-form">
+                        <div>
+                            <label for="nombre">Nombre Completo:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana López" required />
+                        </div>
+                        <div>
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" placeholder="Ej: ana.lopez@correo.com"
+                                required />
+                        </div>
+                        <div>
+                            <label for="telefono">Teléfono (Opcional):</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 33 1234 5678" />
+                        </div>
+                        <div>
+                            <label for="asunto">Asunto (Opcional):</label>
+                            <input type="text" id="asunto" name="asunto" placeholder="Ej: Consulta sobre artroscopia" />
+                        </div>
+                        <div>
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea id="mensaje" name="mensaje"
+                                placeholder="Escribe aquí tu consulta o el motivo de tu cita..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dr. Salvador Arreola Murillo. Todos los derechos reservados.</p>
+        <p>Sitio web diseñado con fines informativos. Consulte a su médico.</p>
+    </footer>
+
+    <script>
+        // JavaScript para el menú móvil
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            // Para accesibilidad: actualizar aria-expanded
+            const isExpanded = navLinks.classList.contains('nav-active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Opcional: Cerrar menú al hacer clic en un enlace (para SPAs o navegación en la misma página)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
