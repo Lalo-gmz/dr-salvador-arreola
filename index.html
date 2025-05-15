@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr. Salvador Arreola - Traumatología y Ortopedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Reset básico */
         * {
@@ -89,7 +90,7 @@
         /* Estilos del Hero Actualizado */
         #inicio {
             position: relative;
-            background-image: url('hero1.jpg');
+            background-image: url('hero.webp');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -497,6 +498,70 @@
             /* Padding para que no toque los bordes en móvil */
         }
 
+        /* Estilos del Botón Flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            /* Ajusta según preferencia */
+            background-color: #25d366;
+            /* Color verde de WhatsApp */
+            color: white;
+            border-radius: 50px;
+            /* Botón redondo por defecto */
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 2em;
+            /* Tamaño del icono por defecto */
+            width: 60px;
+            /* Ancho del círculo */
+            height: 60px;
+            /* Altura del círculo */
+            justify-content: center;
+            /* Centrar contenido */
+            transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, background-color 0.3s ease;
+            /* Animación de expansión y color */
+            overflow: hidden;
+            /* Ocultar el texto hasta expandir */
+        }
+
+        .whatsapp-float i {
+            /* Estilo del icono */
+            flex-shrink: 0;
+            /* Evitar que el icono se encoja */
+        }
+
+        .whatsapp-float .text {
+            /* Estilo del texto que aparece al hacer hover */
+            display: none;
+            /* Oculto por defecto */
+            font-size: 0.6em;
+            /* Ajustar tamaño del texto */
+            margin-left: 10px;
+            /* Espacio entre icono y texto */
+            white-space: nowrap;
+            /* Evitar salto de línea del texto */
+        }
+
+        .whatsapp-float:hover {
+            background-color: #1da851;
+            /* Color un poco más oscuro al hacer hover */
+            width: 200px;
+            /* Ancho expandido */
+            border-radius: 8px;
+            /* Bordes redondeados al expandir */
+        }
+
+        .whatsapp-float:hover .text {
+            display: block;
+            /* Mostrar texto al hacer hover */
+        }
+
+
         /* --- ESTILOS RESPONSIVOS --- */
         @media (max-width: 768px) {
             body {
@@ -589,6 +654,22 @@
                 min-width: 100%;
                 /* Ocupar todo el ancho en móvil */
             }
+
+            /* Ajuste del botón flotante en móvil */
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                /* Tamaño más pequeño en móvil */
+                height: 50px;
+                font-size: 1.6em;
+                /* Tamaño del icono en móvil */
+            }
+
+            .whatsapp-float:hover {
+                width: 180px;
+                /* Ajuste del ancho expandido en móvil */
+            }
         }
 
         @media (max-width: 480px) {
@@ -621,6 +702,22 @@
                 padding: 12px 25px;
                 font-size: 1em;
             }
+
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.4em;
+            }
+
+            .whatsapp-float:hover {
+                width: 160px;
+            }
+
+            .whatsapp-float .text {
+                font-size: 0.55em;
+            }
         }
     </style>
 </head>
@@ -630,7 +727,7 @@
         <nav>
             <a href="#inicio" class="logo">Dr. Salvador Arreola</a>
             <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-                &#9776; </button>
+                ☰ </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -653,43 +750,53 @@
 
     <section id="servicios" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Especialidades Médicas</h2>
+            <h2 class="section-title">Especialidades Médicas y Procedimientos</h2>
             <div class="servicios-grid">
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=AH"
-                        alt="Icono Artroscopia de Hombro y Rodilla">
-                    <h3>Artroscopia de Hombro y Rodilla</h3>
-                    <p>Mínima invasión para diagnóstico y tratamiento de lesiones articulares, permitiendo una
-                        recuperación más rápida.</p>
+                    <img src="/icons/caderas.png" alt="Icono Prótesis de cadera">
+                    <h3>Prótesis de cadera</h3>
+                    <p>Implante quirúrgico para reemplazar total o parcialmente la articulación de la cadera dañada.</p>
                 </div>
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=LD" alt="Icono Lesiones Deportivas">
-                    <h3>Lesiones Deportivas</h3>
-                    <p>Atención especializada para atletas, enfocada en la recuperación funcional y el retorno seguro al
-                        deporte.</p>
+                    <img src="/icons/rodilla.png" alt="Icono Artroscopia de rodilla">
+                    <h3>Artroscopia de rodilla</h3>
+                    <p>Técnica mínimamente invasiva para diagnosticar y tratar problemas dentro de la articulación de la
+                        rodilla.</p>
                 </div>
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=PA" alt="Icono Prótesis Articulares">
-                    <h3>Prótesis Articulares</h3>
-                    <p>Reemplazos de hombro, rodilla y cadera para aliviar el dolor y restaurar la movilidad en casos de
-                        desgaste avanzado.</p>
+                    <img src="/icons/dolor-en-las-articulaciones.png" alt="Icono Cirugía articular">
+                    <h3>Cirugía articular</h3>
+                    <p>Procedimientos quirúrgicos para reparar o reconstruir articulaciones dañadas debido a lesiones o
+                        enfermedades.</p>
                 </div>
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=MF" alt="Icono Manejo de Fracturas">
-                    <h3>Manejo de Fracturas</h3>
-                    <p>Tratamiento integral de fracturas, desde el diagnóstico preciso hasta la recuperación completa,
-                        conservador o quirúrgico.</p>
+                    <img src="/icons/pelvis.png" alt="Icono Cirugía de cadera">
+                    <h3>Cirugía de cadera</h3>
+                    <p>Intervenciones quirúrgicas para tratar diversas afecciones de la cadera, incluyendo fracturas y
+                        desgaste.</p>
                 </div>
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=PC" alt="Icono Padecimientos de Columna">
-                    <h3>Padecimientos de Columna</h3>
-                    <p>Diagnóstico y tratamiento de afecciones de la columna vertebral, buscando mejorar tu calidad de
-                        vida.</p>
+                    <img src="/icons/rodilla_1.png" alt="Icono Prótesis de rodilla">
+                    <h3>Prótesis de rodilla</h3>
+                    <p>Reemplazo quirúrgico de la articulación de la rodilla por una prótesis artificial para aliviar el
+                        dolor y mejorar la función.</p>
                 </div>
                 <div class="servicio-item">
-                    <img src="https://placehold.co/70x70/007BFF/FFFFFF?text=OP" alt="Icono Ortopedia Pediátrica">
-                    <h3>Ortopedia Pediátrica</h3>
-                    <p>Atención especializada para los problemas musculoesqueléticos de niños y adolescentes.</p>
+                    <img src="/icons/pelvis_1.png"
+                        alt="Icono Reemplazo articular de cadera">
+                    <h3>Reemplazo articular de cadera</h3>
+                    <p>Procedimiento para sustituir la articulación de la cadera enferma o dañada por una prótesis.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="icons/hueso-roto.png" alt="Icono Artroplastia">
+                    <h3>Artroplastia</h3>
+                    <p>Término general para el reemplazo quirúrgico o la remodelación de una articulación.</p>
+                </div>
+                <div class="servicio-item">
+                    <img src="/icons/huesos.png" alt="Icono Cirugía mínima invasiva">
+                    <h3>Cirugía mínima invasiva</h3>
+                    <p>Técnicas quirúrgicas que utilizan pequeñas incisiones para reducir el trauma, el dolor y el
+                        tiempo de recuperación.</p>
                 </div>
             </div>
         </div>
@@ -701,10 +808,10 @@
             <div class="sobre-mi-content">
                 <div class="sobre-mi-img">
                     <img src="https://static.wixstatic.com/media/a24af1_82483c9d7e334e11933319df770e4672~mv2.jpg/v1/crop/x_75,y_0,w_656,h_821/fill/w_371,h_465,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a24af1_82483c9d7e334e11933319df770e4672~mv2.jpg"
-                        alt="Dr. Salvador Arreola Murillo, Especialista en Ortopedia y Traumatología">
+                        alt="Dr. Salvador Arreola Gomez, Especialista en Ortopedia y Traumatología">
                 </div>
                 <div class="sobre-mi-texto">
-                    <h2>Dr. Salvador Arreola Murillo</h2>
+                    <h2>Dr. Salvador Arreola Gomez</h2>
                     <p>Médico especialista en Ortopedia y Traumatología, con un firme compromiso en devolver la función
                         y mejorar significativamente la calidad de vida de mis pacientes. Mi formación es sólida y
                         cuento con amplia experiencia en cirugía articular avanzada, medicina deportiva de alto
@@ -805,25 +912,24 @@
                     <h3>Información de Contacto</h3>
                     <p>Si deseas agendar una consulta, resolver dudas o necesitas más información, no dudes en
                         contactarme. Estoy para servirte.</p>
-                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=T"
-                            alt="Icono Teléfono"><strong>Teléfono:</strong> <a href="tel:+523338130609">+52 (33) 3813
-                            0609</a></p>
-                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=E"
+                    <p><img src="/icons/telefono.png"
+                            alt="Icono Teléfono"><strong>Teléfono:</strong> <a href="tel:+523310772696">33 1077 2696</a></p>
+                    <p><img src="/icons/correo.png"
                             alt="Icono Email"><strong>Email:</strong> <a
                             href="mailto:contacto@drsalvadorarreola.com">contacto@drsalvadorarreola.com</a></p>
-                    <p><img src="https://placehold.co/22x22/007BFF/FFFFFF?text=U"
+                    <p><img src="/icons/ubicacion.png"
                             alt="Icono Ubicación"><strong>Dirección:</strong><br>Hospital Real San José, Consultorio
                         415<br>Av. Real San José, Valle Real<br>Zapopan, Jalisco, México.</p>
                     <div class="contacto-map">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59720.51802708102!2d-103.4130336486328!3d20.691448499999988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428af5ce5697df5%3A0xcf9f29038b825235!2sDr.%20Salvador%20Arreola.%20Traumatologia%20y%20Ortopedia%20HMA!5e0!3m2!1ses-419!2smx!4v1715744630003!5m2!1ses-419!2smx"
+                            src="https://maps.google.com/maps?q=Dr.%20Salvador%20Arreola.%20Traumatologia%20y%20Ortopedia%20HMA&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                             width="100%" height="350" style="border:0; border-radius: 10px;" allowfullscreen=""
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="contacto-form-container">
                     <h3>Envíanos un Mensaje Directo</h3>
-                    <form action="TU_ENDPOINT_DE_FORMULARIO" method="POST" class="contacto-form">
+                    <form action="#" method="POST" class="contacto-form">
                         <div>
                             <label for="nombre">Nombre Completo:</label>
                             <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana López" required />
@@ -857,6 +963,12 @@
         <p>© 2025 Dr. Salvador Arreola Murillo. Todos los derechos reservados.</p>
         <p>Sitio web diseñado con fines informativos. Consulte a su médico.</p>
     </footer>
+
+    <a href="https://wa.me/5213310772696" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="text">Agenda tu cita</span>
+    </a>
+
 
     <script>
         // JavaScript para el menú móvil
